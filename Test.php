@@ -5,22 +5,29 @@ $list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
     61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80,
     81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100
 ];
+
 function binarySearch($list, $item)
 {
     $low = 0;
     $high = count($list) - 1;
+    $step = 0;
     while ($low <= $high) {
+        $step++;
         $mid = intval(($low + $high) / 2);
-        $guess = $list[$mid]; //value
-        if ($guess === $item) {
-            return $mid; // جایگاه
+        $guess = $list[$mid];
+        if ($guess == $item) {
+            echo "Step : " . $step . "<br/>";
+            return $mid;
         } elseif ($guess > $item) {
             $high = $mid - 1;
         } else {
             $low = $mid + 1;
         }
     }
-
+    echo "Step: " . $step . "<br/>";
+    return "Null!!";
 }
-$index = binarySearch($list, 52);
-echo "index : " . $index;
+
+
+echo "Index: " . binarySearch($list, 1111) . "<br/>";
+
